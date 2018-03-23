@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.valkyrie.nabeshimamac.leders_jankenapp.MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/light_blue_400"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="30sp"
+                android:layout_marginLeft="10sp"
+                android:layout_marginRight="5sp"
+                android:layout_marginTop="10sp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/cpuTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/cpu_title"
+                    android:textColor="@color/grey_white_1000"
+                    android:textSize="20sp" />
+
+                <ProgressBar
+                    android:id="@+id/progressBar1"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="20sp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_margin="5sp"
+                    android:background="@drawable/frame"
+                    android:progressDrawable="@drawable/progressbar" />
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/cpu"
+                android:layout_width="150sp"
+                android:layout_height="150sp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="15sp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/goo" />
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/grey_white_1000"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/result"
+                android:layout_width="match_parent"
+                android:layout_height="40sp"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:gravity="center_horizontal"
+                android:text="@string/result_title"
+                android:textColor="@color/grey_black_1000"
+                android:textSize="30sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:layout_margin="10sp"
+                    android:text="@string/chose"
+                    android:textColor="@color/grey_black_1000"
+                    android:textSize="15sp" />
+
+                <ImageView
+                    android:id="@+id/player"
+                    android:layout_width="150sp"
+                    android:layout_height="150sp"
+                    android:layout_gravity="center"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/paa" />
+
+                <android.support.v4.widget.Space
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="bottom"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/image_choose_01"
+                        android:layout_width="120sp"
+                        android:layout_height="120sp"
+                        android:layout_gravity="bottom"
+                        android:layout_weight="1"
+                        android:background="@drawable/paa"
+                        android:onClick="paa"
+                        android:scaleType="fitXY" />
+
+                    <ImageView
+                        android:id="@+id/image_choose_02"
+                        android:layout_width="120sp"
+                        android:layout_height="120sp"
+                        android:layout_gravity="bottom"
+                        android:layout_weight="1"
+                        android:background="@drawable/choki"
+                        android:onClick="choki"
+                        android:scaleType="fitXY" />
+
+                    <ImageView
+                        android:id="@+id/image_choose_03"
+                        android:layout_width="120sp"
+                        android:layout_height="120sp"
+                        android:layout_gravity="bottom"
+                        android:layout_weight="1"
+                        android:background="@drawable/goo"
+                        android:onClick="goo"
+                        android:scaleType="fitXY" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="30sp"
+                    android:layout_marginBottom="10sp"
+                    android:layout_marginLeft="10sp"
+                    android:layout_marginRight="5sp"
+                    android:layout_marginTop="10sp">
+
+                    <TextView
+                        android:id="@+id/playerTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="@string/user_title"
+                        android:textSize="20sp" />
+
+                    <ProgressBar
+                        android:id="@+id/progressBar2"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="20sp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_margin="5sp"
+                        android:background="@drawable/frame"
+                        android:progressDrawable="@drawable/progressbar" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

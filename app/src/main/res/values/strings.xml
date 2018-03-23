@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Leders_JankenApp</string>
+    <string name="cpu_title">CPU</string>
+    <string name="user_title">YOU</string>
+    <string name="result_title">じゃんけんをしよう！</string>
+    <string name="result_win">勝ち！！</string>
+    <string name="result_draw">引き分け！</string>
+    <string name="result_lose">負けです …</string>
+    <string name="user_win_title">おめでとう！！</string>
+    <string name="user_win_message">コンピューターを倒した！</string>
+    <string name="user_lose_title">残念…</string>
+    <string name="user_lose_message">もう一度挑戦しよう</string>
+    <string name="chose">あなたが出した手は…</string>
+
+
+</resources>
