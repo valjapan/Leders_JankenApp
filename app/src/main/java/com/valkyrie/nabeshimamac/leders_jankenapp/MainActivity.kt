@@ -19,23 +19,25 @@ import kotlin.properties.Delegates
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var cpuBar: ProgressBar
-    private lateinit var myBar: ProgressBar
-    private lateinit var cpuImageView: ImageView
-    private lateinit var resultTextView: TextView
-    private lateinit var playerImageView: ImageView
-    private lateinit var paaImageView: ImageView
-    private lateinit var chokiImageView: ImageView
-    private lateinit var gooImageView: ImageView
-    private var random: Random = Random()
-    private var randomNumber: Int by Delegates.notNull()
-    private var cpuHp: Int by Delegates.notNull()
-    private var userHp: Int by Delegates.notNull()
+    private lateinit var cpuBar: ProgressBar //cpuの体力ゲージ
+    private lateinit var myBar: ProgressBar //自分の体力ゲージ
+    private lateinit var cpuImageView: ImageView //cpu側の画像
+    private lateinit var resultTextView: TextView //結果の文字
+    private lateinit var playerImageView: ImageView //自分の画像
+    private lateinit var paaImageView: ImageView //パーの画像
+    private lateinit var chokiImageView: ImageView //チョキの画像
+    private lateinit var gooImageView: ImageView //グーの画像
+    private var random: Random = Random() //ランダムな数字の表示
+    private var randomNumber: Int by Delegates.notNull() //ランダムな数字の保存
+    private var cpuHp: Int by Delegates.notNull() //cpuのHPを数える
+    private var userHp: Int by Delegates.notNull() //自分のHPを数える
 
 
+    //アプリ起動時の処理
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        //レイアウトでおいた部品をプログラムで変更できるように
 
         cpuImageView = findViewById(R.id.cpu)
         resultTextView = findViewById(R.id.result)
@@ -53,12 +55,15 @@ class MainActivity : AppCompatActivity() {
         myBar = findViewById(R.id.progressBar2)
         myBar.max = userHp
         myBar.progress = userHp
+        //HPバーの表示（初期）
 
         reloadBar()
+        //HPバーの更新
 
     }
 
     fun paa(view: View) {
+        //パーを押した時の処理
         playerImageView.setImageResource(R.drawable.paa)
         cpuTurn()
         when (randomNumber) {
@@ -71,6 +76,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun choki(view: View) {
+        //チョキを押した時の処理
         playerImageView.setImageResource(R.drawable.choki)
         cpuTurn()
         when (randomNumber) {
@@ -83,6 +89,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun goo(view: View) {
+        //グーを押した時の処理
         playerImageView.setImageResource(R.drawable.goo)
         cpuTurn()
         when (randomNumber) {
@@ -95,7 +102,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun cpuTurn() {
+        //CPUのだす手をランダムするクラス
         randomNumber = random.nextInt(3)
+        //適当に３つから１つを抽選する
         when (randomNumber) {
             0 -> cpu.setImageResource(R.drawable.goo)
             1 -> cpu.setImageResource(R.drawable.choki)
@@ -104,6 +113,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun win() {
+        //自分が勝ったの処理
         resultTextView.setText(R.string.result_win)
 
         cpuHp = cpuHp - 20
@@ -111,6 +121,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun draw() {
+        //引き分けの処理
         resultTextView.setText(R.string.result_draw)
         cpuHp = cpuHp - 10
         userHp = userHp - 10
@@ -118,12 +129,14 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun lose() {
+        //自分が負けの処理
         resultTextView.setText(R.string.result_lose)
         userHp = userHp - 20
     }
 
     fun reloadBar() {
         onHogeProgressChanged(cpuHp, userHp)
+        //HPの減り方をじわじわ減らすためにアニメーションを導入()内に渡す値（今回はCPUのHPと自分のHP）を入力
 
         Log.d("cpu_life", Integer.toString(cpuHp))
         Log.d("user_life", Integer.toString(userHp))
@@ -131,8 +144,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun checkHp() {
+        //HPを確認してどちらかのHPが0になってゲームオーバーになってないか確認するクラス
         if (cpuHp <= 0 && userHp <= 0) {
-
+            //どちらも同時にHPが0になった時
             AlertDialog.Builder(this).setCancelable(false).apply {
                 setTitle(R.string.result_draw)
                 setMessage(R.string.user_lose_message)
@@ -145,6 +159,7 @@ class MainActivity : AppCompatActivity() {
             }
 
         } else if (cpuHp <= 0) {
+            //自分が勝った時
             AlertDialog.Builder(this).setCancelable(false).apply {
                 setTitle(R.string.user_win_title)
                 setMessage(R.string.user_win_message)
@@ -157,7 +172,7 @@ class MainActivity : AppCompatActivity() {
             }
 
         } else if (userHp <= 0) {
-
+            //自分が負けた時
             AlertDialog.Builder(this).setCancelable(false).apply {
                 setTitle(R.string.user_lose_title)
                 setMessage(R.string.user_lose_message)
@@ -173,6 +188,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun onHogeProgressChanged(progressCpuInPercent: Int, progressUserInPercent: Int) {
+        //ゲージの減り方のアニメーションのクラス
         val cpuAnimation = ObjectAnimator.ofInt(cpuBar, "progress", progressCpuInPercent)
         cpuAnimation.duration = 500 // 0.5 second
         cpuAnimation.interpolator = DecelerateInterpolator()
@@ -186,6 +202,7 @@ class MainActivity : AppCompatActivity() {
 
 
     private fun reGame() {
+        //ゲームオーバーからもう一度ゲームをリセットする時にやる処理
         cpuHp = 100
         userHp = 100
         resultTextView.setText(R.string.result_title)

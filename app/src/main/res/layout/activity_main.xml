@@ -46,8 +46,8 @@
 
             <ImageView
                 android:id="@+id/cpu"
-                android:layout_width="150sp"
-                android:layout_height="150sp"
+                android:layout_width="113sp"
+                android:layout_height="113sp"
                 android:layout_gravity="center"
                 android:layout_marginBottom="15sp"
                 android:layout_marginTop="5dp"
@@ -68,11 +68,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="40sp"
                 android:layout_gravity="center"
-                android:layout_margin="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
                 android:gravity="center_horizontal"
                 android:text="@string/result_title"
                 android:textColor="@color/grey_black_1000"
-                android:textSize="30sp" />
+                android:textSize="20sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -82,17 +84,17 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:layout_margin="10sp"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:layout_margin="10sp"
                     android:text="@string/chose"
                     android:textColor="@color/grey_black_1000"
                     android:textSize="15sp" />
 
                 <ImageView
                     android:id="@+id/player"
-                    android:layout_width="150sp"
-                    android:layout_height="150sp"
+                    android:layout_width="125sp"
+                    android:layout_height="125sp"
                     android:layout_gravity="center"
                     android:layout_margin="5dp"
                     android:background="@drawable/paa" />
